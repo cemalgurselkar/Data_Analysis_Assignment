@@ -1,0 +1,9 @@
+1-Mutluluk-Zaman Çizgisi: Yıllara göre ortalama Life-Ladder
+2-GDP-Zaman Çizgisi:Yıllara göre ortalama Log-GDP
+3-Refah Bileşenleri Radar: GDP, sağlık, destek, özgürlük, yolsuzluk
+4-Ülke Benzerlik Ağı: GDP benzerliğine göre ülke düğümleri
+5-Yolsuzluk-Adalet Isı Haritası: Corruption vs Confidence
+6-Özgürlük Box-Violin: GDP gruplarına göre Freedom dağılımı
+7-Sağlık Ömrü vs Mutluluk Box: Healthy life exp gruplarında Life-Ladder box
+8-Kıta Radar Refah: Her kıtanın ort. bileşenlerle radarı → kıta karşılaştırma.
+9-Güven-Mutluluk Slope: 2005-21 Güven değişimi vs Mutluluk değişimi eğimi.
