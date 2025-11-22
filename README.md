@@ -1,4 +1,6 @@
 # Global Happiness and Welfare Analysis (2005–2021)
+## Note:
+**Project link is: https://data-assignment1.streamlit.app/**
 
 ## Project Description
 This project provides a comprehensive, data-driven analysis of global happiness trends and their underlying socioeconomic and institutional drivers between 2005 and 2021. Utilizing a multi-stage visualization strategy implemented in a Streamlit application, the analysis moves from macro-level global context to micro-level component volatility and exceptional case studies.
