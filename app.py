@@ -8,26 +8,19 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-def load_data():
-    df = pd.read_csv("data.csv")
-    df = df.drop(columns=["Unnamed: 0.3", "Unnamed: 0.2", "Unnamed: 0.1", "Unnamed: 0"], axis=1)
-    return df
-
-df = load_data()
-
 st.title("World Happinies Report (2005-2021)")
 st.markdown("---")
 
 VISUALIZATIONS = {
-    "1. Global Map": viz_1,
-    "2. Components of prosperity.": viz_2,
-    "3. Normalized Welfare Profiles of Selected Countries.": viz_3,
-    "4. Correlation Matrix Among Basic Welfare Indicators.": viz_4,
-    "5. Countries with the largest declines and increases in happiness rates between 2005 and 2021. ": viz_5,
-    "6. Average Change in Welfare Components in the Top 10 Countries Experiencing a Decline in Happiness.": viz_6,
-    "7. Low-GDP Countries – Population (area) vs Happiness": viz_7,
-    "8. Low-GDP Regions – Difference According to AF Reference (SA & EU)": viz_8,
-    "9. Normalized Welfare Profiles in Low GDP Countries (2021)": viz_9
+    "1. Global Happiness Rates": viz1,
+    "2. Welfare Profile of the Top 20 Happiest Countries": viz2,
+    "3. Relationship between Welfare Components (Top 20 Happiest Countries)": viz3,
+    "4. The Net Change in Happiness for the Top 10 Improvers and Decliners": viz4,
+    "5. Component net change for the biggest happiness decliners": viz5,
+    "6. The dynamic evolution of Happiness vs. GDP": viz6,
+    "7. Global Distribution of Low-Income Countries": viz7,
+    "8. Deconstructing the Continental Gap": viz8,
+    "9. Identifying Critical Systemic Weaknesses.": viz9
 }
 
 st.sidebar.title("Analysis Selection")
@@ -48,7 +41,7 @@ if selected_viz == "4. GDP vs Happinesss":
         value=current_year,
         step=1
     )
-    VISUALIZATIONS[selected_viz](df, year_slider)
+    VISUALIZATIONS[selected_viz]()
     
 elif selected_viz == "6. Continental Happiness Trend":
     st.subheader(f"Visual 6 Settings")
@@ -61,7 +54,7 @@ elif selected_viz == "6. Continental Happiness Trend":
     
     df_filtered_cont = df[df['cont'].isin(selected_continents)]
 
-    VISUALIZATIONS[selected_viz](df_filtered_cont)
+    VISUALIZATIONS[selected_viz]()
 
 else:
-    VISUALIZATIONS[selected_viz](df)
+    VISUALIZATIONS[selected_viz]()
