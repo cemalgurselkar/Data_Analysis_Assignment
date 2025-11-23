@@ -66,5 +66,5 @@ This project follows a nine-stage analytical pipeline supported by clear and pro
 | **Member** | **Student ID** | |
 |------------|----------------|-------------------------------|
 | **Cemal Gürsel Kar** | **2021555032** |  |
-| **Orhan Can Çıkman** | **[Student ID]** |  |
-| **Mustafa Kayıklık** | **[Student ID]** | |
+| **Orhan Can Çıkman** | **2021555016** |  |
+| **Mustafa Kayıklık** | **2021555037** | |

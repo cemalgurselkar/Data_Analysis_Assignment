@@ -167,7 +167,9 @@ def viz5():
     st.plotly_chart(fig)
 
 def viz6():
-    df_anim = df.dropna(subset=['cont']).copy()
+    df_anim = df[(df['Year'] >= 2005) & (df['Year'] <= 2021)].dropna(subset=['cont']).copy()
+    df_anim['Year'] = df_anim['Year'].astype(int) 
+    df_anim = df_anim.sort_values('Year') 
 
     avg_life = df_anim.groupby('Country name')['Life Ladder'].mean()
     df_anim['Life Ladder_size'] = df_anim['Country name'].map(avg_life)
@@ -179,13 +181,22 @@ def viz6():
         animation_frame="Year",
         animation_group="Country name",
         size="Life Ladder_size",
-        color="cont",
+        color="cont", 
         hover_name="Country name",
         title="Global Evolution of Happiness vs. GDP (2005-2021)",
+        labels={"Log GDP per capita": "Log GDP per Capita", 
+                "Life Ladder": "Happiness Score (Life Ladder)", 
+                "cont": "Continent"},
+
+        range_x=[df_anim['Log GDP per capita'].min() - 0.5, df_anim['Log GDP per capita'].max() + 0.5],
+        range_y=[df_anim['Life Ladder'].min() - 0.5, df_anim['Life Ladder'].max() + 0.5]
     )
 
+    fig.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 1000 
+    fig.layout.updatemenus[0].buttons[0].args[1]['transition']['duration'] = 500
+    
     fig.update_layout(title_x=0.5)
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 def viz7():
     gdp_40 = df['Log GDP per capita'].quantile(0.4)
@@ -252,14 +263,12 @@ def viz8():
         labels=dict(x="Continent", y="Welfare Component", color="Score"),
     )
 
-    # --- ANNOTATION EKLE (Karelere değer yazdır)
     fig.update_traces(
         text=heatmap_matrix.round(2),
         texttemplate="%{text}",
         textfont={"size": 14},
     )
 
-    # --- BÜYÜKLÜK AYARLA
     fig.update_layout(
         title="Profile Heatmap of Low GDP Continents",
         width=1000,
@@ -307,7 +316,7 @@ def viz9():
         df_melt,
         x='Welfare Component',
         y='Normalized Score',
-        title='Viz 9: Distribution of Normalized Scores for the Bottom 20 Unhappiest Countries'
+        title='Distribution of Normalized Scores for the Bottom 20 Unhappiest Countries'
     )
 
     fig.update_layout(title_x=0.5, showlegend=False)
